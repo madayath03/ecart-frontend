@@ -1,0 +1,20 @@
+.navbar {
+    position:fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+}
+
+.panda{
+    animation: stroll 10s linear infinite;
+    }
+    
+    @keyframes stroll {
+        from {
+            transform: translateX(100%);
+        }
+    
+        to {
+            transform: translateX(1470%);
+        }
+    }

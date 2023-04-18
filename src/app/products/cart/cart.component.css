@@ -1,0 +1,17 @@
+.walking{
+    animation: stroll 10s linear infinite;
+}
+
+@keyframes stroll {
+    from {
+        transform: translateX(800%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.peeping {
+    transform: translateX(-50%);
+}

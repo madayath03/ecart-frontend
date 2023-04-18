@@ -1,0 +1,31 @@
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img height="300px" class="card-img-top mb-5 mb-md-0" [src]=product.image
+                    [alt]=product.title /></div>
+            <div class="col-md-6">
+                <!-- _id is mongo db id -->
+                <div class="small mb-1">Product Id: {{product._id}} </div>
+                <h1 class="display-5 fw-bolder">{{product.title}}</h1>
+                <div class="fs-5 mb-3">
+                    <span class="fw=bolder text-danger fs-4">${{product.price}} </span>
+                    <div class="d-flex justify-content-start">
+                        <div class="star-rating fw-bolder me-2">
+                        </div>
+                        <div class="review-count mt-1"></div>
+                    </div>
+                </div>
+                <p class="lead">{{product.description}} </p>
+                <div class="d-flex justify-content-between">
+                    <button (click)="addtoWishlist(product)" class="btn btn-outline-success flex-shrink-0"
+                        type="button">
+                        <i class="fa-solid fa-heart-circle-plus"></i>
+                    </button>
+                    <button (click)="addtoCart(product)" class="btn btn-outline-primary flex-shrink-0" type="button">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

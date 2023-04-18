@@ -1,0 +1,11 @@
+.star-rating {
+    color: #FFD700;
+    /* Set the color of the stars */
+    font-size: 24px;
+    /* Set the size of the stars */
+}
+
+.star-rating i {
+    margin-right: 4px;
+    /* Add some spacing between the stars */
+}

@@ -1,0 +1,138 @@
+<!-- Header-->
+<header class="bg-success py-5"
+    style="background: url('https://wallpapercave.com/wp/wp7566351.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder text-white">Shop in style</h1>
+            <p class="lead fw-normal text-light mb-0">With World's best Online Shopping Store</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of allProducts | filter:searchkey : 'title' ">
+                <div class="card h-100">
+                    <div (click)="route(product.id)">
+                        <!-- Product image-->
+                        <img class="card-img-top p-4" height="250px" [src]=product.image [alt]=product.title />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{product.title.slice(0,20)}}...</h5>
+                                <!-- Product price-->
+                                <span class="fw-bolder">${{product.price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="d-flex flex-column mb-3">
+                            <!-- <a class="btn btn-outline-success mt-auto" routerLink="view/{{product.id}}"><i
+                                    class="fa-solid fa-eye fa-1x"></i></a> -->
+                            <button *ngIf="product.inWishlist == 0" (click)="addtoWishlist(product)"
+                                class="btn btn-outline-success flex-shrink-0 mb-4" type="button" data-bs-toggle="modal"
+                                data-bs-target="#wishModal">
+                                <i class="fa-solid fa-heart-circle-plus me-2"></i>Add to Wishlist
+                            </button>
+                            <a *ngIf="product.inWishlist == 1" class="btn btn-outline-warning flex-shrink-0 mb-4"
+                                type="button" routerLink="/products/wishlist"><i class="fa-solid fa-heart me-2"></i>Go To Wishlist
+                            </a>
+
+                            <!-- <img class="mario" height="50px"
+                                    src="https://media.tenor.com/JZw_7NmInUAAAAAi/busy-working.gif" alt="mario peeping"> -->
+                            <!-- add to cart icon -->
+                            <button *ngIf="product.inCart == 0" (click)="addtoCart(product)"
+                                class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                    class="fa-solid fa-cart-plus fa-1x me-2"></i>Add to Cart</button>
+                            <button *ngIf="product.inCart == 1" class="btn btn-outline-danger"
+                                routerLink="/products/cart"><i class="fa-solid fa-cart-plus fa-1x me-2"></i>Go To
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- modal for repeated orders -->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bolder text-danger" id="staticBackdropLabel">Alert</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                It seems you have already added this item to your cart. Do you want to continue increasing the quantity?
+            </div>
+            <div class="modal-footer d-flex justify-content-evenly">
+                <button (click)="yestoCart(id)" type="button" class="btn btn-primary"
+                    data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Yes</button>
+                <button data-bs-dismiss="modal" type="button" class="btn btn-danger">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+ -->
+<!-- modal for view for selecting yes -->
+<!-- <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bolder text-success" id="exampleModalToggleLabel2">Yaay !, Let's Shop
+                    More</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Item quantity has been increased successfully !!
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- modal for fresh order -->
+<!-- Modal -->
+<div class="modal modal-sm fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                Added to cart
+                <img height="40px" src="https://media.tenor.com/R-8OMXWF1BkAAAAj/grocery-cart.gif" alt="wishlist">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal for wishlist adding-->
+<div class="modal modal-sm fade" id="wishModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                Added to wishlist
+                <img height="40px" src="https://media.tenor.com/R-8OMXWF1BkAAAAj/grocery-cart.gif" alt="wishlist">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal for wishlist going -->
+<div class="modal modal-sm fade" id="gotowishModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                Already added to wishlist
+                <img height="40px" src="https://media.tenor.com/R-8OMXWF1BkAAAAj/grocery-cart.gif" alt="wishlist">
+            </div>
+        </div>
+    </div>
+</div>
